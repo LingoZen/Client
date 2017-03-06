@@ -1,0 +1,9 @@
+<input [ngModel]="searchQuery" (ngModelChange)="searchQueryChanged($event)"/>
+
+
+<div *ngFor="let sentence of searchResults | async" class="language-container">
+  <md-card class="sentence-card">
+    {{sentence?.id}}
+    {{sentence?.text}}
+  </md-card>
+</div>

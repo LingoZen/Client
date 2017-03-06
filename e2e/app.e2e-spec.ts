@@ -1,10 +1,10 @@
-import { Frontend3Page } from './app.po';
+import { LingoZenAppPage } from './app.po';
 
 describe('frontend3 App', () => {
-  let page: Frontend3Page;
+  let page: LingoZenAppPage;
 
   beforeEach(() => {
-    page = new Frontend3Page();
+    page = new LingoZenAppPage();
   });
 
   it('should display message saying app works', () => {
