@@ -7,18 +7,34 @@ import {Translation} from "./translation.models";
 
 export class Reaction extends BaseModel {
   type: ReactionType;
+  user: User;
   sourceSentence: SourceSentence;
   translation: Translation;
-  user: User;
   comment: Comment;
 
-  constructor(comment: any) {
-    super(comment);
+  constructor(reaction: any) {
+    super(reaction);
 
-    this.type = comment.type;
-    this.sourceSentence = comment.sourceSentence;
-    this.translation = comment.translation;
-    this.user = comment.user;
-    this.comment = comment.comment;
+    if (!reaction) {
+      return;
+    }
+
+    this.type = reaction.type;
+    this.user =
+      reaction.user instanceof User ?
+        reaction.user :
+        new User(reaction.user);
+    this.sourceSentence =
+      reaction.sourceSentence instanceof SourceSentence ?
+        reaction.sourceSentence :
+        new SourceSentence(reaction.sourceSentence);
+    this.translation =
+      reaction.translation instanceof Translation ?
+        reaction.translation :
+        new Translation(reaction.translation);
+    this.comment =
+      reaction.comment instanceof Comment ?
+        reaction.comment :
+        new Comment(reaction.comment);
   }
 }

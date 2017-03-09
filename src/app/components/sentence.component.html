@@ -1,0 +1,35 @@
+<md-card class="sentence-card">
+  Text: {{(sentence | async)?.text}}<br/>
+  Language: {{(sentence | async)?.language.englishName}}
+  <br/><br/><br/>
+  JSON: {{sentence | async | json}}
+</md-card>
+
+<br/><br/><br/><br/><br/><br/><br/>
+
+Comments<br/>
+<md-card class="sentence-card" *ngFor="let comment of (sentence | async)?.comments">
+  Text: {{comment.text}}<br/>
+  Language: {{comment.language.englishName}}
+  <br/><br/><br/>
+  JSON: {{comment | json}}
+</md-card>
+
+<br/><br/><br/><br/><br/><br/><br/>
+
+Translations
+<md-card class="sentence-card" *ngFor="let translation of (sentence | async)?.translations">
+  Text: {{translation.text}}<br/>
+  Language: {{translation.englishName}}
+
+  Comments:
+  <md-card class="sentence-card" *ngFor="let comment of translation.comments">
+    Text: {{comment.text}}<br/>
+    Language: {{comment.language.englishName}}
+    <br/><br/><br/>
+    JSON: {{comment | json}}
+  </md-card>
+
+  <br/><br/><br/>
+  JSON: {{translation | json}}
+</md-card>

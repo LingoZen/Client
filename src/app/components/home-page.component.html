@@ -3,7 +3,13 @@
 
 <div *ngFor="let sentence of searchResults | async" class="language-container">
   <md-card class="sentence-card">
-    {{sentence?.id}}
-    {{sentence?.text}}
+    Text: {{sentence.text}}<br/>
+    Translations: {{sentence.translations.length}}<br/>
+    Comments: {{sentence.comments.length}}<br/>
+    Language: {{sentence.language.englishName}}<br/>
+    <a routerLink="/sentences/{{sentence.id}}" >See More</a><br/>
+    <br/>
+    <br/>
+    JSON: {{sentence | json}}
   </md-card>
 </div>

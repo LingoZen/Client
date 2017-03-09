@@ -24,7 +24,8 @@ import * as Components from "./components";
   ],
   declarations: [
     AppComponent,
-    Components.HomePageComponent
+    Components.HomePageComponent,
+    Components.SentenceComponent
   ],
   bootstrap: [
     AppComponent
