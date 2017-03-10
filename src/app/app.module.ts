@@ -25,7 +25,8 @@ import * as Components from "./components";
   declarations: [
     AppComponent,
     Components.HomePageComponent,
-    Components.SentenceComponent
+    Components.SentenceComponent,
+    Components.SentenceSearchResultComponent
   ],
   bootstrap: [
     AppComponent
