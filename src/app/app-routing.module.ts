@@ -1,6 +1,7 @@
 import {NgModule} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 import * as Components from "./components";
+import {AuthGuard} from "./guards/auth.guard";
 
 const routes: Routes = [
   {
@@ -9,11 +10,13 @@ const routes: Routes = [
   },
   {
     path: 'sentences',
-    component: Components.SearchSentencesComponent
+    component: Components.SearchSentencesComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'sentences/:sentenceId',
-    component: Components.SentenceComponent
+    component: Components.SentenceComponent,
+    canActivate: [AuthGuard]
   }
 ];
 

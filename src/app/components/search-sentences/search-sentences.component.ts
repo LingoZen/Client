@@ -1,13 +1,14 @@
-import {Component} from '@angular/core';
+import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {Observable} from "rxjs";
-import {SourceSentenceService} from "../services";
 import {ApolloQueryResult} from "apollo-client";
-import {SourceSentence} from "../models";
-import {ActivatedRoute} from "@angular/router";
+
+import {SourceSentenceService} from "../../services";
+import {SourceSentence} from "../../models";
 
 @Component({
   templateUrl: './search-sentences.component.html',
-  styleUrls: ['./search-sentences.component.scss']
+  styleUrls: ['./search-sentences.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class SearchSentencesComponent {
   searchQuery: string;
@@ -19,13 +20,13 @@ export class SearchSentencesComponent {
     this.search();
   }
 
-  public searchQueryChanged(newSearchQuery: string) {
+  public searchQueryChanged(newSearchQuery: string): void {
     this.searchQuery = newSearchQuery;
 
     this.search();
   }
 
-  private search() {
+  private search(): void {
     this.searchResults = this.sourceSentenceService.search(this.searchQuery);
   }
 }

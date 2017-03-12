@@ -1,13 +1,15 @@
-import {Component} from '@angular/core';
-import {Observable} from "rxjs";
-import {SourceSentenceService} from "../services";
-import {ApolloQueryResult} from "apollo-client";
-import {SourceSentence} from "../models";
 import {ActivatedRoute} from "@angular/router";
+import {Component, ChangeDetectionStrategy} from '@angular/core';
+import {ApolloQueryResult} from "apollo-client";
+import {Observable} from "rxjs";
+
+import {SourceSentenceService} from "../../services";
+import {SourceSentence} from "../../models";
 
 @Component({
   templateUrl: './sentence.component.html',
-  styleUrls: ['./sentence.component.scss']
+  styleUrls: ['./sentence.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Default
 })
 export class SentenceComponent {
   sentence: Observable<ApolloQueryResult<SourceSentence>>;
