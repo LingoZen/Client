@@ -8,6 +8,10 @@ const routes: Routes = [
     component: Components.HomePageComponent
   },
   {
+    path: 'sentences',
+    component: Components.SearchSentencesComponent
+  },
+  {
     path: 'sentences/:sentenceId',
     component: Components.SentenceComponent
   }

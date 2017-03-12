@@ -9,22 +9,5 @@ import {SourceSentence} from "../models";
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent {
-  searchQuery:string;
-  searchResults:Observable<ApolloQueryResult<SourceSentence[]>>;
 
-  constructor(private sourceSentenceService:SourceSentenceService) {
-    this.searchQuery = "evolve";
-
-    this.search();
-  }
-
-  public searchQueryChanged(newSearchQuery:string) {
-    this.searchQuery = newSearchQuery;
-
-    this.search();
-  }
-
-  private search() {
-    this.searchResults = this.sourceSentenceService.search(this.searchQuery);
-  }
 }

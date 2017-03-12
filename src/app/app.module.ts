@@ -3,6 +3,7 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {MaterialModule} from "@angular/material";
+import {FlexLayoutModule} from "@angular/flex-layout";
 import {ApolloModule} from 'apollo-angular';
 
 import {AppRoutingModule} from './app-routing.module';
@@ -19,13 +20,17 @@ import * as Components from "./components";
     HttpModule,
     AppRoutingModule,
     MaterialModule,
+    FlexLayoutModule.forRoot(),
     AppCoreModule,
     ApolloModule.forRoot(provideApolloClient)
   ],
   declarations: [
     AppComponent,
+
     Components.HomePageComponent,
+    Components.SearchSentencesComponent,
     Components.SentenceComponent,
+
     Components.SentenceSearchResultComponent
   ],
   bootstrap: [
