@@ -1,6 +1,8 @@
-<header>
-  LingoZen Header
+<nav fxLayout="row" fxLayoutAlign="space-between">
+  <a id="header-text" fxFlexAlign="center" routerLink="/">LingoZen</a>
 
-  <button class="btn btn-primary btn-margin" (click)="auth.login()" *ngIf="!auth.authenticated()">Log In</button>
-  <button class="btn btn-primary btn-margin" (click)="auth.logout()" *ngIf="auth.authenticated()">Log Out</button>
-</header>
+  <div id="login-register-button-containers">
+    <button md-raised-button routerLink='/login'>Log In</button>
+    <button md-raised-button routerLink='/register'>Register</button>
+  </div>
+</nav>

@@ -9,6 +9,16 @@ const routes: Routes = [
     component: Components.HomePageComponent
   },
   {
+    path: 'login',
+    component: Components.LoginComponent,
+    canActivate: []
+  },
+  {
+    path: 'register',
+    component: Components.RegisterComponent,
+    canActivate: []
+  },
+  {
     path: 'sentences',
     component: Components.SearchSentencesComponent,
     canActivate: [AuthGuard]

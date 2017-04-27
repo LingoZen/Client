@@ -1,8 +1,8 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
-import {MaterialModule} from "@angular/material";
+import {MdButtonModule} from "@angular/material";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {ApolloModule} from 'apollo-angular';
 import {StoreModule} from '@ngrx/store';
@@ -21,11 +21,13 @@ import * as Components from "./components";
     FormsModule,
     HttpModule,
     AppRoutingModule,
-    MaterialModule,
     FlexLayoutModule,
     AppCoreModule,
     ApolloModule.forRoot(provideApolloClient),
-    StoreModule.provideStore(storeReducers)
+    StoreModule.provideStore(storeReducers),
+
+    // Material Modules
+    MdButtonModule
   ],
   declarations: [
     AppComponent,
@@ -33,13 +35,16 @@ import * as Components from "./components";
     Components.HomePageComponent,
     Components.SearchSentencesComponent,
     Components.SentenceComponent,
+    Components.LoginComponent,
+    Components.RegisterComponent,
 
     Components.HeaderComponent,
     Components.SentenceSearchResultComponent
   ],
   bootstrap: [
     AppComponent
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {
 }

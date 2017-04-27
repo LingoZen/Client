@@ -1,1 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+html {
+  min-height: 100%;
+}
+
+body {
+  min-height: 100%;
+  margin: 0;
+}
+
+//use the same padding for the navbar and the main contents
+lz-header nav,
+router-outlet + * > * /*the immediate child of router-outlet's next sibling*/{
+  padding: 8px 16px;
+}

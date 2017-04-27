@@ -2,10 +2,10 @@ import {Component} from '@angular/core';
 import {Auth} from "../../services";
 
 @Component({
-  templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.scss']
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.scss']
 })
-export class HomePageComponent {
+export class RegisterComponent {
   constructor(private auth: Auth) {
   }
 }
