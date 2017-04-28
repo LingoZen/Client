@@ -3,16 +3,17 @@ import {Apollo} from "apollo-angular";
 import {ApolloQueryResult} from "apollo-client";
 import {Observable} from "rxjs";
 
-import {searchSentences} from "../gql-queries";
-import {getSourceSentence} from "../gql-queries";
-import {SourceSentence} from "../models";
+import {SearchQuery} from "../interfaces/search-query.model";
+import {SourceSentence} from "../models/source-sentence.models";
+import {searchSentences} from "../gql-queries/search-sentence";
+import {getSourceSentence} from "../gql-queries/get-source-sentence";
 
 @Injectable()
 export class SourceSentenceService {
   constructor(private apollo: Apollo) {
   }
 
-  public search(searchQuery: string): Observable<ApolloQueryResult<SourceSentence[]>> {
+  public search(searchQuery: SearchQuery): Observable<ApolloQueryResult<SourceSentence[]>> {
     return this.apollo.watchQuery<any>({
       query: searchSentences,
       variables: {

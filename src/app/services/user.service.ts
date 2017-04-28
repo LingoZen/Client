@@ -1,16 +1,29 @@
 import {Injectable} from "@angular/core";
-import {Apollo} from "apollo-angular";
+import {Store} from '@ngrx/store';
+import {Observable} from "rxjs/Observable";
 
 import {User} from "../models/user.models";
+import {AppState} from "../states/app-state.interface";
 
 @Injectable()
 export class UserService {
-  constructor() {
+  private user: Observable<User>;
+  private loggedIn: boolean;
+
+  constructor(private store: Store<AppState>) {
+    this.user = store.select('user');
+    this.user.subscribe(user => this.loggedIn = !!user); //we want bool not user. !! will turn a truthy into true, and a falsy into false
   }
 
-  public setUserWithLoginProfile(userProfile: any): User {
-    //todo: set user in store
+  public setUser(user: User): void {
+    this.store.dispatch({type: 'SET_USER', payload: user});
+  }
 
-    return null;
+  public getUser(): Observable<User> {
+    return this.user;
+  }
+
+  public isUserLoggedIn(){
+    return this.loggedIn;
   }
 }

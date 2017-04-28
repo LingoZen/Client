@@ -3,8 +3,9 @@ import {Component, ChangeDetectionStrategy} from '@angular/core';
 import {ApolloQueryResult} from "apollo-client";
 import {Observable} from "rxjs";
 
-import {SourceSentenceService} from "../../services";
-import {SourceSentence} from "../../models";
+import {SourceSentence} from "../../models/source-sentence.models";
+import {SourceSentenceService} from "../../services/source-sentence.service";
+
 
 @Component({
   templateUrl: './sentence.component.html',

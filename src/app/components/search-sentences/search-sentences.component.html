@@ -1,5 +1,7 @@
-<input [ngModel]="searchQuery" (ngModelChange)="searchQueryChanged($event)"/>
+search sentences
 
-<div *ngFor="let sentence of searchResults | async" class="language-container">
-  <lz-sentence-search-result [sentence]="sentence"></lz-sentence-search-result>
-</div>
+<app-sentence-search-bar (searchQueryChanged)="changeSearchQuery($event)"></app-sentence-search-bar>
+
+<app-sentence-search-result *ngFor="let sentence of searchResults | async"
+                           [sentence]="sentence">
+</app-sentence-search-result>

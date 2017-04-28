@@ -2,8 +2,8 @@ import {BaseModel} from "./base-model.model";
 import {SourceSentence} from "./source-sentence.models";
 import {User} from "./user.models";
 import {Comment} from "./comment.models";
-import {ReactionType} from "../enums";
 import {Translation} from "./translation.models";
+import {ReactionType} from "../enums/reaction-type.enum";
 
 export class Reaction extends BaseModel {
   type: ReactionType;

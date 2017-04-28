@@ -1,0 +1,10 @@
+<div fxLayout="row">
+  <md-input-container>
+    <input mdInput placeholder="Enter Search Here" [ngModel]="searchString"
+           (ngModelChange)="changeSearchString($event)">
+  </md-input-container>
+  <md-select placeholder="Language" [ngModel]="searchLanguage" (ngModelChange)="changeSearchLanguage($event)"
+             ngDefaultControl>
+    <md-option *ngFor="let language of languageOptions" [value]="language.id">{{language.name}}</md-option>
+  </md-select>
+</div>

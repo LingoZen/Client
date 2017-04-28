@@ -10,7 +10,7 @@ body {
 }
 
 //use the same padding for the navbar and the main contents
-lz-header nav,
+app-header nav,
 router-outlet + * > * /*the immediate child of router-outlet's next sibling*/{
   padding: 8px 16px;
 }

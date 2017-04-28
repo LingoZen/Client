@@ -1,10 +1,10 @@
 import {Component, Input, ChangeDetectionStrategy} from '@angular/core';
+import {SourceSentence} from "../../models/source-sentence.models";
+import {SourceSentenceService} from "../../services/source-sentence.service";
 
-import {SourceSentenceService} from "../../services";
-import {SourceSentence} from "../../models";
 
 @Component({
-  selector: 'lz-sentence-search-result',
+  selector: 'app-sentence-search-result',
   templateUrl: './sentence-search-result.component.html',
   styleUrls: ['./sentence-search-result.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
