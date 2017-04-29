@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
-export const searchSentences = gql`
-  query searchSentences($searchQuery: String!) {
+export const searchSourceSentencesQuery = gql`
+  query searchSourceSentences($searchQuery: String!) {
     searchSourceSentences(searchQuery: $searchQuery) {
       id
       text

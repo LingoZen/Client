@@ -1,1 +1,43 @@
-Register
+<form (ngSubmit)="register()" #registerForm="ngForm">
+    <md-card>
+        <md-card-content fxLayout="column">
+            <md-input-container>
+                <input mdInput placeholder="Username" type="text" id="username" name="username"
+                       [(ngModel)]="registerModel.username"
+                       [disabled]="isFormLocked" required>
+            </md-input-container>
+
+            <md-input-container>
+                <input mdInput placeholder="Password" type="password" id="password" name="password"
+                       [(ngModel)]="registerModel.password" [disabled]="isFormLocked" required>
+            </md-input-container>
+
+            <md-input-container>
+                <input mdInput placeholder="Email" type="text" id="email" name="email"
+                       [(ngModel)]="registerModel.email" [disabled]="isFormLocked" required>
+            </md-input-container>
+
+            <md-input-container>
+                <input mdInput placeholder="Name" type="text" id="name" name="name"
+                       [(ngModel)]="registerModel.name" [disabled]="isFormLocked">
+            </md-input-container>
+
+
+            <div id="register-error-container" class="form-error-container" [ngSwitch]="registerError"
+                 *ngIf="registerError">
+                <span *ngSwitchCase="RegisterError.USERNAME_NOT_UNIQUE" i18n>Error: Username is not unique</span>
+                <span *ngSwitchCase="RegisterError.EMAIL_NOT_UNIQUE" i18n>Error: Email is not unique</span>
+                <span *ngSwitchCase="RegisterError.PASSWORD_NOT_SECURE" i18n>Error: Password is not secure</span>
+                <span *ngSwitchCase="RegisterError.BAD_EMAIL_FORMAT" i18n>Error: Email format is bad</span>
+                <span *ngSwitchDefault i18n>Unknown Error. Please try again at a later time. If this persists please contact us.</span>
+            </div>
+        </md-card-content>
+
+        <md-card-actions>
+            <button md-button type="submit" class="btn btn-success"
+                    [disabled]="!registerForm.form.valid || isFormLocked" i18n>
+                Register
+            </button>
+        </md-card-actions>
+    </md-card>
+</form>

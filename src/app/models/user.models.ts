@@ -5,8 +5,7 @@ import {Comment} from "./comment.models";
 import {Reaction} from "./reaction.models";
 
 export class User extends BaseModel {
-    firstName: string;
-    lastName: string;
+    name: string;
     username: string;
     email: string;
     password: string;
@@ -23,8 +22,7 @@ export class User extends BaseModel {
             return;
         }
 
-        this.firstName = user.firstName;
-        this.lastName = user.lastName;
+        this.name = user.name;
         this.username = user.username;
         this.email = user.email;
         this.password = user.password;

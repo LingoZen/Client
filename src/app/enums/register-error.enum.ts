@@ -1,0 +1,7 @@
+export enum RegisterError {
+    USERNAME_NOT_UNIQUE = 1,
+    EMAIL_NOT_UNIQUE,
+    PASSWORD_NOT_SECURE,
+    BAD_EMAIL_FORMAT,
+    UNKNOWN
+}

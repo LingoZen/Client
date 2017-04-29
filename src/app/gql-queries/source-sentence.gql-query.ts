@@ -1,7 +1,7 @@
 import gql from "graphql-tag";
 
-export const getSourceSentence = gql`
-  query getSearchSentence($id: ID!) {
+export const sourceSentenceQuery = gql`
+  query sourceSentence($id: ID!) {
     sourceSentence(id: $id) {
       id
       text

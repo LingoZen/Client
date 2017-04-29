@@ -5,8 +5,8 @@ import {Observable} from "rxjs";
 
 import {SearchQuery} from "../interfaces/search-query.interface";
 import {SourceSentence} from "../models/source-sentence.models";
-import {searchSentences} from "../gql-queries/search-sentence";
-import {getSourceSentence} from "../gql-queries/get-source-sentence";
+import {searchSourceSentencesQuery} from "../gql-queries/search-source-sentence.gql-query";
+import {sourceSentenceQuery} from "../gql-queries/source-sentence.gql-query";
 
 @Injectable()
 export class SourceSentenceService {
@@ -15,7 +15,7 @@ export class SourceSentenceService {
 
     public search(searchQuery: SearchQuery): Observable<ApolloQueryResult<SourceSentence[]>> {
         return this.apollo.watchQuery<any>({
-            query: searchSentences,
+            query: searchSourceSentencesQuery,
             variables: {
                 searchQuery: searchQuery
             }
@@ -26,7 +26,7 @@ export class SourceSentenceService {
 
     public getSourceSentence(id: String): Observable<ApolloQueryResult<SourceSentence>> {
         return this.apollo.watchQuery<any>({
-            query: getSourceSentence,
+            query: sourceSentenceQuery,
             variables: {
                 id: id
             }

@@ -16,10 +16,10 @@
             <div id="login-error-container" class="form-error-container" [ngSwitch]="loginError" *ngIf="loginError">
         <span *ngSwitchCase="LoginError.INCORRECT_USERNAME_OR_PASSWORD"
               i18n>Error: Username or password is incorrect</span>
-                <span *ngSwitchDefault
-                      i18n>Unknown Error. Please try again at a later time. If this persists please contact us.</span>
+                <span *ngSwitchDefault i18n>Unknown Error. Please try again at a later time. If this persists please contact us.</span>
             </div>
         </md-card-content>
+
         <md-card-actions>
             <button md-button type="submit" class="btn btn-success"
                     [disabled]="!loginForm.form.valid || isFormLocked"
@@ -28,6 +28,4 @@
             </button>
         </md-card-actions>
     </md-card>
-
-
 </form>
