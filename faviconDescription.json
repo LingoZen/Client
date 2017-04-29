@@ -1,0 +1,57 @@
+{
+  "instructions": "http://realfavicongenerator.net/favicon_result?file_id=p1betd5mh51g1b1ck6uiu1gec19546#.WQTS4NLyuUm",
+  "masterPicture": "src/assets/master-favicon.png",
+  "iconsPath": "/",
+  "design": {
+    "ios": {
+      "pictureAspect": "noChange",
+      "assets": {
+        "ios6AndPriorIcons": true,
+        "ios7AndLaterIcons": true,
+        "precomposedIcons": false,
+        "declareOnlyDefaultIcon": false
+      }
+    },
+    "desktopBrowser": {},
+    "windows": {
+      "pictureAspect": "noChange",
+      "backgroundColor": "#9fa8da",
+      "onConflict": "override",
+      "assets": {
+        "windows80Ie10Tile": true,
+        "windows10Ie11EdgeTiles": {
+          "small": true,
+          "medium": true,
+          "big": true,
+          "rectangle": true
+        }
+      }
+    },
+    "androidChrome": {
+      "pictureAspect": "shadow",
+      "themeColor": "#9fa8da",
+      "manifest": {
+        "name": "LingoZen",
+        "startUrl": "lingozen.com",
+        "display": "standalone",
+        "orientation": "notSet",
+        "onConflict": "override",
+        "declared": true
+      },
+      "assets": {
+        "legacyIcon": true,
+        "lowResolutionIcons": true
+      }
+    },
+    "safariPinnedTab": {
+      "pictureAspect": "blackAndWhite",
+      "threshold": 33.59375,
+      "themeColor": "#9fa8da"
+    }
+  },
+  "settings": {
+    "compression": 5,
+    "scalingAlgorithm": "NearestNeighbor",
+    "errorOnImageTooSmall": false
+  }
+}

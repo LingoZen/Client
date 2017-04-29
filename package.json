@@ -8,7 +8,10 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "deploy": "ng build --prod --base-href \"https://LingoZen.github.io/LingoZen/\" && angular-cli-ghpages"
+    "deploy": "ng build --prod --base-href \"https://LingoZen.github.io/LingoZen/\" && angular-cli-ghpages",
+    "generate-and-inject-favicons": "npm run generate-favicon-data && npm run inject-favicons",
+    "generate-favicon-data": "real-favicon generate .\\faviconDescription.json faviconData.json .\\src\\assets\\",
+    "inject-favicons": "real-favicon inject .\\faviconData.json .\\src\\assets\\ .\\src\\index.html"
   },
   "license": "UNLICENSED",
   "private": true,
@@ -52,6 +55,7 @@
     "karma-jasmine": "1.1.0",
     "karma-jasmine-html-reporter": "0.2.2",
     "protractor": "5.1.1",
+    "sass-material-colors": "0.0.5",
     "ts-node": "3.0.2",
     "tslint": "^4.0.0",
     "typescript": "2.2.2"
