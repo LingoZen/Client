@@ -27,13 +27,13 @@ export class LoginService extends GqlResource {
         // send the login request
         let mutationResponse;
         try {
-             mutationResponse = await this.mutate({
+            mutationResponse = await this.mutate({
                 mutation: loginMutation,
                 variables: loginModel
             });
-        } catch (err){
+        } catch (err) {
             // if there is an error, return the LoginError
-            switch(err.type){
+            switch (err) {
                 case 'INCORRECT_USERNAME_OR_PASSWORD':
                     return LoginError.INCORRECT_USERNAME_OR_PASSWORD;
                 default:

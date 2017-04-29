@@ -3,13 +3,12 @@
         <md-card-content fxLayout="column">
             <md-input-container>
                 <input mdInput placeholder="Username" type="text" id="username" name="username"
-                       [(ngModel)]="loginModel.username"
-                       [disabled]="isFormLocked" required>
+                       [(ngModel)]="loginModel.username" required>
             </md-input-container>
 
             <md-input-container>
                 <input mdInput placeholder="Password" type="password" id="password" name="password"
-                       [(ngModel)]="loginModel.password" [disabled]="isFormLocked" required>
+                       [(ngModel)]="loginModel.password" required>
             </md-input-container>
 
 
@@ -22,7 +21,7 @@
 
         <md-card-actions>
             <button md-button type="submit" class="btn btn-success"
-                    [disabled]="!loginForm.form.valid || isFormLocked"
+                    [disabled]="!loginForm.form.valid"
                     i18n>
                 Login
             </button>

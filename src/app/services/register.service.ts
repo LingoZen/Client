@@ -27,13 +27,13 @@ export class RegisterService extends GqlResource {
         // send the login request
         let mutationResponse;
         try {
-             mutationResponse = await this.mutate({
+            mutationResponse = await this.mutate({
                 mutation: registerMutation,
                 variables: registerModel
             });
-        } catch (err){
+        } catch (err) {
             // if there is an error, return the LoginError
-            switch(err.type){
+            switch (err) {
                 default:
                     return RegisterError.UNKNOWN;
             }

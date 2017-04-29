@@ -1,4 +1,4 @@
-<div *ngIf="user | async; let user; then loggedIn else notLoggedIn"></div>
+<div *ngIf="userService.loggedIn; then loggedIn else notLoggedIn"></div>
 
 <ng-template #loggedIn>
     <app-search-sentences></app-search-sentences>

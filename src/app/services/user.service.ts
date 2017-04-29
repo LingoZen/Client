@@ -7,23 +7,27 @@ import {AppState} from "../states/app-state.interface";
 
 @Injectable()
 export class UserService {
-    private user: Observable<User>;
-    private loggedIn: boolean;
+    private _user: Observable<User>;
+    private _loggedIn: boolean;
 
     constructor(private store: Store<AppState>) {
-        this.user = store.select('user');
-        this.user.subscribe(user => this.loggedIn = !!user); //we want bool not user. !! will turn a truthy into true, and a falsy into false
+        this._user = store.select('user');
+        this._user.subscribe(user => this._loggedIn = !!user); //we want bool not user. !! will turn a truthy into true, and a falsy into false
     }
 
-    public setUser(user: User): void {
+    setUser(user: User) {
         this.store.dispatch({type: 'SET_USER', payload: user});
     }
 
-    public getUser(): Observable<User> {
-        return this.user;
+    get user(): Observable<User> {
+        return this._user;
     }
 
-    public isUserLoggedIn() {
-        return this.loggedIn;
+    get loggedIn(): boolean {
+        return this._loggedIn;
+    }
+
+    set loggedIn(_) {
+        throw new Error(`Cannot directly set logged in`);
     }
 }

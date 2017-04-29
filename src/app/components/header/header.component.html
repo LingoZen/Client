@@ -1,8 +1,18 @@
 <nav fxLayout="row" fxLayoutAlign="space-between">
     <a id="header-text" fxFlexAlign="center" routerLink="/">LingoZen</a>
 
-    <div id="login-register-button-containers">
-        <button md-raised-button routerLink='/login'>Log In</button>
-        <button md-raised-button routerLink='/register'>Register</button>
-    </div>
+    <div *ngIf="userService.loggedIn; then loggedIn else notLoggedIn"></div>
+
+    <ng-template #loggedIn>
+        <div id="logout-button-container">
+            <button md-raised-button (click)=logOut()>Log Out</button>
+        </div>
+    </ng-template>
+
+    <ng-template #notLoggedIn>
+        <div id="login-register-button-containers">
+            <button md-raised-button routerLink='/login'>Log In</button>
+            <button md-raised-button routerLink='/register'>Register</button>
+        </div>
+    </ng-template>
 </nav>

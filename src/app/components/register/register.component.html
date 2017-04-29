@@ -3,23 +3,22 @@
         <md-card-content fxLayout="column">
             <md-input-container>
                 <input mdInput placeholder="Username" type="text" id="username" name="username"
-                       [(ngModel)]="registerModel.username"
-                       [disabled]="isFormLocked" required>
+                       [(ngModel)]="registerModel.username" required>
             </md-input-container>
 
             <md-input-container>
                 <input mdInput placeholder="Password" type="password" id="password" name="password"
-                       [(ngModel)]="registerModel.password" [disabled]="isFormLocked" required>
+                       [(ngModel)]="registerModel.password" required>
             </md-input-container>
 
             <md-input-container>
                 <input mdInput placeholder="Email" type="text" id="email" name="email"
-                       [(ngModel)]="registerModel.email" [disabled]="isFormLocked" required>
+                       [(ngModel)]="registerModel.email" required>
             </md-input-container>
 
             <md-input-container>
                 <input mdInput placeholder="Name" type="text" id="name" name="name"
-                       [(ngModel)]="registerModel.name" [disabled]="isFormLocked">
+                       [(ngModel)]="registerModel.name">
             </md-input-container>
 
 
@@ -35,7 +34,7 @@
 
         <md-card-actions>
             <button md-button type="submit" class="btn btn-success"
-                    [disabled]="!registerForm.form.valid || isFormLocked" i18n>
+                    [disabled]="!registerForm.form.valid" i18n>
                 Register
             </button>
         </md-card-actions>
