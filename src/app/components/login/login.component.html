@@ -1,11 +1,33 @@
-<form>
-  <div>
-    <label for="username">Username</label>
-    <input type="text" class="form-control" id="username" required>
-  </div>
-  <div>
-    <label for="password">Password</label>
-    <input type="password" class="form-control" id="password">
-  </div>
-  <button type="submit" class="btn btn-success">Submit</button>
+<form (ngSubmit)="login()" #loginForm="ngForm">
+    <md-card>
+        <md-card-content fxLayout="column">
+            <md-input-container>
+                <input mdInput placeholder="Username" type="text" id="username" name="username"
+                       [(ngModel)]="loginModel.username"
+                       [disabled]="isFormLocked" required>
+            </md-input-container>
+
+            <md-input-container>
+                <input mdInput placeholder="Password" type="password" id="password" name="password"
+                       [(ngModel)]="loginModel.password" [disabled]="isFormLocked" required>
+            </md-input-container>
+
+
+            <div id="login-error-container" class="form-error-container" [ngSwitch]="loginError" *ngIf="loginError">
+        <span *ngSwitchCase="LoginError.INCORRECT_USERNAME_OR_PASSWORD"
+              i18n>Error: Username or password is incorrect</span>
+                <span *ngSwitchDefault
+                      i18n>Unknown Error. Please try again at a later time. If this persists please contact us.</span>
+            </div>
+        </md-card-content>
+        <md-card-actions>
+            <button md-button type="submit" class="btn btn-success"
+                    [disabled]="!loginForm.form.valid || isFormLocked"
+                    i18n>
+                Login
+            </button>
+        </md-card-actions>
+    </md-card>
+
+
 </form>
