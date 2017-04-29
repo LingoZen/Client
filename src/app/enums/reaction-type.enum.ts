@@ -1,4 +1,4 @@
 export enum ReactionType {
-  LIKE,
-  DISLIKE
+    LIKE = 1,
+    DISLIKE
 }

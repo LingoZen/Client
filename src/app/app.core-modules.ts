@@ -1,16 +1,18 @@
-import {NgModule} from '@angular/core';
+import {NgModule} from "@angular/core";
 
 import {UserService} from "./services/user.service";
 import {SourceSentenceService} from "./services/source-sentence.service";
 import {AuthGuard} from "./guards/auth.guard";
+import {LoginService} from "./services/login.service";
 
 @NgModule({
-  providers: [
-    SourceSentenceService,
-    UserService,
+    providers: [
+        SourceSentenceService,
+        UserService,
+        LoginService,
 
-    AuthGuard
-  ]
+        AuthGuard
+    ]
 })
 export class AppCoreModule {
 }

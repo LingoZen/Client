@@ -1,15 +1,15 @@
-import {BrowserModule} from '@angular/platform-browser';
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
-import {FormsModule} from '@angular/forms';
-import {HttpModule} from '@angular/http';
-import {MdButtonModule, MdInputContainer, MdInputModule, MdSelect, MdSelectModule} from "@angular/material";
+import {BrowserModule} from "@angular/platform-browser";
+import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from "@angular/core";
+import {FormsModule} from "@angular/forms";
+import {HttpModule} from "@angular/http";
+import {MdButtonModule, MdCardModule, MdInputModule, MdSelectModule} from "@angular/material";
 import {FlexLayoutModule} from "@angular/flex-layout";
-import {ApolloModule} from 'apollo-angular';
-import {StoreModule} from '@ngrx/store';
+import {ApolloModule} from "apollo-angular";
+import {StoreModule} from "@ngrx/store";
 
-import {AppRoutingModule} from './app-routing.module';
-import {AppComponent} from './app.component';
-import {provideApolloClient} from './apollo-client';
+import {AppRoutingModule} from "./app-routing.module";
+import {AppComponent} from "./app.component";
+import {provideApolloClient} from "./apollo-client";
 import {AppCoreModule} from "./app.core-modules";
 
 import {SearchSentencesComponent} from "./components/search-sentences/search-sentences.component";
@@ -25,38 +25,39 @@ import {SentenceSearchBarComponent} from "./components/sentence-search-bar/sente
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    HttpModule,
-    AppRoutingModule,
-    FlexLayoutModule,
-    AppCoreModule,
-    ApolloModule.forRoot(provideApolloClient),
-    StoreModule.provideStore(storeReducers),
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        HttpModule,
+        AppRoutingModule,
+        FlexLayoutModule,
+        AppCoreModule,
+        ApolloModule.forRoot(provideApolloClient),
+        StoreModule.provideStore(storeReducers),
 
-    // Material Modules
-    MdButtonModule,
-    MdSelectModule,
-    MdInputModule
-  ],
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    SearchSentencesComponent,
-    SentenceComponent,
-    LoginComponent,
-    RegisterComponent,
-    UnregisteredComponent,
-    SentenceSearchBarComponent,
-    HeaderComponent,
-    SentenceSearchResultComponent
-  ],
-  bootstrap: [
-    AppComponent
-  ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+        // Material Modules
+        MdButtonModule,
+        MdSelectModule,
+        MdInputModule,
+        MdCardModule
+    ],
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        SearchSentencesComponent,
+        SentenceComponent,
+        LoginComponent,
+        RegisterComponent,
+        UnregisteredComponent,
+        SentenceSearchBarComponent,
+        HeaderComponent,
+        SentenceSearchResultComponent
+    ],
+    bootstrap: [
+        AppComponent
+    ],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {
 }

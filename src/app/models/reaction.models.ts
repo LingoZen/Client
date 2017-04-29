@@ -6,35 +6,35 @@ import {Translation} from "./translation.models";
 import {ReactionType} from "../enums/reaction-type.enum";
 
 export class Reaction extends BaseModel {
-  type: ReactionType;
-  user: User;
-  sourceSentence: SourceSentence;
-  translation: Translation;
-  comment: Comment;
+    type: ReactionType;
+    user: User;
+    sourceSentence: SourceSentence;
+    translation: Translation;
+    comment: Comment;
 
-  constructor(reaction: any) {
-    super(reaction);
+    constructor(reaction: any) {
+        super(reaction);
 
-    if (!reaction) {
-      return;
+        if (!reaction) {
+            return;
+        }
+
+        this.type = reaction.type;
+        this.user =
+            reaction.user instanceof User ?
+                reaction.user :
+                new User(reaction.user);
+        this.sourceSentence =
+            reaction.sourceSentence instanceof SourceSentence ?
+                reaction.sourceSentence :
+                new SourceSentence(reaction.sourceSentence);
+        this.translation =
+            reaction.translation instanceof Translation ?
+                reaction.translation :
+                new Translation(reaction.translation);
+        this.comment =
+            reaction.comment instanceof Comment ?
+                reaction.comment :
+                new Comment(reaction.comment);
     }
-
-    this.type = reaction.type;
-    this.user =
-      reaction.user instanceof User ?
-        reaction.user :
-        new User(reaction.user);
-    this.sourceSentence =
-      reaction.sourceSentence instanceof SourceSentence ?
-        reaction.sourceSentence :
-        new SourceSentence(reaction.sourceSentence);
-    this.translation =
-      reaction.translation instanceof Translation ?
-        reaction.translation :
-        new Translation(reaction.translation);
-    this.comment =
-      reaction.comment instanceof Comment ?
-        reaction.comment :
-        new Comment(reaction.comment);
-  }
 }
