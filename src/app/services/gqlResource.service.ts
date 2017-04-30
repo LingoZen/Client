@@ -11,7 +11,15 @@ export class GqlResource {
         return new Promise((resolve, reject) => {
             this.apollo.mutate(mutationOptions).subscribe(
                 ({data}) => resolve(data),
-                error => reject(error.graphQLErrors[0].data.code)
+                error => {
+                    if (error.graphQLErrors[0] &&
+                        error.graphQLErrors[0].data &&
+                        error.graphQLErrors[0].data.code) {
+                        return reject(error.graphQLErrors[0].data.code);
+                    } else {
+                        return reject(error);
+                    }
+                }
             );
         });
     }
@@ -20,7 +28,15 @@ export class GqlResource {
         return new Promise((resolve, reject) => {
             this.apollo.query(queryOptions).subscribe(
                 ({data}) => resolve(data),
-                error => reject(error.graphQLErrors[0].data.code)
+                error => {
+                    if (error.graphQLErrors[0] &&
+                        error.graphQLErrors[0].data &&
+                        error.graphQLErrors[0].data.code) {
+                        return reject(error.graphQLErrors[0].data.code);
+                    } else {
+                        return reject(error);
+                    }
+                }
             );
         });
     }

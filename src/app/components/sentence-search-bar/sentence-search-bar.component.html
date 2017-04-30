@@ -1,5 +1,5 @@
-<div fxLayout="row">
-    <md-input-container>
+<md-card fxLayout="row">
+    <md-input-container fxFlex>
         <input mdInput placeholder="Enter Search Here" [ngModel]="searchString"
                (ngModelChange)="changeSearchString($event)">
     </md-input-container>
@@ -7,4 +7,4 @@
                ngDefaultControl>
         <md-option *ngFor="let language of languageOptions" [value]="language.id">{{language.name}}</md-option>
     </md-select>
-</div>
+</md-card>

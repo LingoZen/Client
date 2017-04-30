@@ -1,6 +1,4 @@
 import {Component} from "@angular/core";
-import {Observable} from "rxjs/Observable";
-import {ApolloQueryResult} from "apollo-client";
 
 import {SearchQuery} from "../../interfaces/search-query.interface";
 import {SourceSentence} from "../../models/source-sentence.models";
@@ -12,16 +10,17 @@ import {SourceSentenceService} from "../../services/source-sentence.service";
     styleUrls: ['./search-sentences.component.scss']
 })
 export class SearchSentencesComponent {
-    searchResults: Observable<ApolloQueryResult<SourceSentence[]>>;
+    searchResults: SourceSentence[];
 
     constructor(private sourceSentenceService: SourceSentenceService) {
     }
 
-    public changeSearchQuery(newSearchQuery: SearchQuery): void {
-        this.search(newSearchQuery);
+    async changeSearchQuery(newSearchQuery: SearchQuery): Promise<void> {
+        this.searchResults = await this.search(newSearchQuery);
     }
 
-    private search(searchQuery: SearchQuery): void {
-        this.searchResults = this.sourceSentenceService.search(searchQuery);
+    private async search(searchQuery: SearchQuery): Promise<SourceSentence[]> {
+        console.log('searching');
+        return this.sourceSentenceService.search(searchQuery);
     }
 }

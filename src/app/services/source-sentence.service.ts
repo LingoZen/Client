@@ -1,35 +1,42 @@
 import {Injectable} from "@angular/core";
 import {Apollo} from "apollo-angular";
-import {ApolloQueryResult} from "apollo-client";
-import {Observable} from "rxjs";
+import * as assert from "assert";
 
 import {SearchQuery} from "../interfaces/search-query.interface";
 import {SourceSentence} from "../models/source-sentence.models";
-import {searchSourceSentencesQuery} from "../gql-queries/search-source-sentence.gql-query";
 import {sourceSentenceQuery} from "../gql-queries/source-sentence.gql-query";
+import {GqlResource} from "./gqlResource.service";
+import {searchSourceSentencesQuery} from "../gql-queries/search-source-sentence.gql-query";
 
 @Injectable()
-export class SourceSentenceService {
-    constructor(private apollo: Apollo) {
+export class SourceSentenceService extends GqlResource {
+    constructor(apollo: Apollo) {
+        super(apollo)
     }
 
-    public search(searchQuery: SearchQuery): Observable<ApolloQueryResult<SourceSentence[]>> {
-        return this.apollo.watchQuery<any>({
+    async search({searchString, language}: SearchQuery): Promise<SourceSentence[]> {
+        assert(searchString);
+        assert(language);
+
+        let queryResponse = await this.query({
             query: searchSourceSentencesQuery,
             variables: {
-                searchQuery: searchQuery
+                searchString: searchString,
+                languageId: language.id
             }
-        }).map(({data}) => (
-            data.searchSourceSentences.map((sourceSentence) => new SourceSentence(sourceSentence))
-        ));
+        });
+
+        return queryResponse.searchSourceSentences.map(sourceSentence => new SourceSentence(sourceSentence));
     }
 
-    public getSourceSentence(id: String): Observable<ApolloQueryResult<SourceSentence>> {
-        return this.apollo.watchQuery<any>({
+    async getSourceSentence(id: String): Promise<SourceSentence> {
+        assert(id);
+
+        let queryResponse = await this.query({
             query: sourceSentenceQuery,
-            variables: {
-                id: id
-            }
-        }).map(({data}) => data.sourceSentence);
+            variables: {id: id}
+        });
+
+        return new SourceSentence(queryResponse.sourceSentence);
     }
 }
