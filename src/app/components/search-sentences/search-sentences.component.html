@@ -1,4 +1,4 @@
-<app-sentence-search-bar (searchQueryChanged)="changeSearchQuery($event)"></app-sentence-search-bar>
+<app-sentence-search-bar (search)="changeSearchQuery($event)"></app-sentence-search-bar>
 
 <app-sentence-search-result *ngFor="let sentence of searchResults"
                             [sentence]="sentence">

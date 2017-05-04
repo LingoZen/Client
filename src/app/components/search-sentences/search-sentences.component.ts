@@ -3,6 +3,7 @@ import {Component} from "@angular/core";
 import {SearchQuery} from "../../interfaces/search-query.interface";
 import {SourceSentence} from "../../models/source-sentence.models";
 import {SourceSentenceService} from "../../services/source-sentence.service";
+import {List} from "immutable";
 
 @Component({
     selector: 'app-search-sentences',
@@ -10,7 +11,7 @@ import {SourceSentenceService} from "../../services/source-sentence.service";
     styleUrls: ['./search-sentences.component.scss']
 })
 export class SearchSentencesComponent {
-    searchResults: SourceSentence[];
+    searchResults: List<SourceSentence>;
 
     constructor(private sourceSentenceService: SourceSentenceService) {
     }
@@ -19,7 +20,7 @@ export class SearchSentencesComponent {
         this.searchResults = await this.search(newSearchQuery);
     }
 
-    private async search(searchQuery: SearchQuery): Promise<SourceSentence[]> {
+    private async search(searchQuery: SearchQuery): Promise<List<SourceSentence>> {
         console.log('searching');
         return this.sourceSentenceService.search(searchQuery);
     }
