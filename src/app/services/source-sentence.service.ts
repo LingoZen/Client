@@ -7,6 +7,7 @@ import {SourceSentence} from "../models/source-sentence.models";
 import {sourceSentenceQuery} from "../gql-queries/source-sentence.gql-query";
 import {GqlResource} from "./gqlResource.service";
 import {searchSourceSentencesQuery} from "../gql-queries/search-source-sentence.gql-query";
+import {List} from "immutable";
 
 @Injectable()
 export class SourceSentenceService extends GqlResource {
@@ -14,7 +15,7 @@ export class SourceSentenceService extends GqlResource {
         super(apollo)
     }
 
-    async search({searchString, language}: SearchQuery): Promise<SourceSentence[]> {
+    async search({searchString, language}: SearchQuery): Promise<List<SourceSentence>> {
         assert(searchString);
         assert(language);
 
@@ -26,7 +27,7 @@ export class SourceSentenceService extends GqlResource {
             }
         });
 
-        return queryResponse.searchSourceSentences.map(sourceSentence => new SourceSentence(sourceSentence));
+        return List.of(...queryResponse.searchSourceSentences.map(sourceSentence => new SourceSentence(sourceSentence)));
     }
 
     async getSourceSentence(id: String): Promise<SourceSentence> {

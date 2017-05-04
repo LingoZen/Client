@@ -1,5 +1,5 @@
-import {Component, EventEmitter, Output} from "@angular/core";
-
+import {AfterViewInit, Component, EventEmitter, Output} from "@angular/core";
+import {List} from "immutable";
 
 import {SearchQuery} from "../../interfaces/search-query.interface";
 import {Language} from "../../models/language.models";
@@ -10,19 +10,15 @@ import {SourceSentenceService} from "../../services/source-sentence.service";
     templateUrl: './sentence-search-bar.component.html',
     styleUrls: ['./sentence-search-bar.component.scss']
 })
-export class SentenceSearchBarComponent {
-    @Output() searchQueryChanged: EventEmitter<SearchQuery>;
+export class SentenceSearchBarComponent implements AfterViewInit {
+    @Output() search: EventEmitter<SearchQuery>;
     searchString: string;
     searchLanguage: Language;
-    languageOptions: Language[];
+    languageOptions: List<Language>;
 
     constructor(private sourceSentenceService: SourceSentenceService) {
-        this.searchString = "evolve";
-        this.searchLanguage = new Language({id: 'eng'});
-        this.searchQueryChanged = new EventEmitter();
-
         // todo: make the language options come from configuration
-        this.languageOptions = [
+        this.languageOptions = List.of(...[
             new Language({
                 id: 'eng',
                 name: "english",
@@ -35,24 +31,23 @@ export class SentenceSearchBarComponent {
                 id: 'fra',
                 name: "français",
             })
-        ];
+        ]);
+
+        this.searchString = "evolve";
+        this.searchLanguage = this.languageOptions.get(0);
+        console.log(this.searchLanguage);
+        this.search = new EventEmitter();
     }
 
-    public changeSearchString(searchString: string): void {
-        this.searchString = searchString;
-        this.emitSearchQueryChanged();
-    }
-
-    public changeSearchLanguage(searchLanguage: Language): void {
-        this.searchLanguage = searchLanguage;
-        this.emitSearchQueryChanged();
+    ngAfterViewInit(): void {
+        this.emitSearch();
     }
 
     /**
      * uses this.searchString, and this.searchLanguage to emit to allow it be called from different functions.
      * do not change this to use parameters
      */
-    private emitSearchQueryChanged() {
-        this.searchQueryChanged.emit(<SearchQuery> {language: this.searchLanguage, searchString: this.searchString});
+    private emitSearch() {
+        this.search.emit(<SearchQuery> {language: this.searchLanguage, searchString: this.searchString});
     }
 }
