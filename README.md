@@ -8,3 +8,6 @@ This means that if someone decided to learn a brand new language today, and want
 
 ### Our Solution
 LingoZen is our solution to this problem. We want to create a community driven platform where language learners can collaborate to build expansive collections of real life sentences with appropriate, accurate translations, and allow those that are learning that language to be able to use that for their own studies.
+
+
+_LINGOZEN IS STILL EARLY IN DEVELOPMENT AT THIS MOMENT_
