@@ -1,4 +1,5 @@
 import {Component} from "@angular/core";
+import {Router} from "@angular/router";
 
 import {UserService} from "../../services/user.service";
 
@@ -8,10 +9,12 @@ import {UserService} from "../../services/user.service";
     styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
-    constructor(public userService: UserService) {
+    constructor(public userService: UserService,
+                private router: Router) {
     }
 
     logOut() {
         this.userService.setUser(null);
+        this.router.navigate(['/']);
     }
 }
