@@ -1,35 +1,36 @@
-<md-card class="sentence-card">
-    Text: {{(sentence | async)?.text}}<br/>
-    Language: {{(sentence | async)?.language.englishName}}
-    <br/><br/><br/>
-    JSON: {{sentence | async | json}}
-</md-card>
+<div *ngIf="sentence; then sentenceIsLoaded else sentenceIsLoading"></div>
 
-<br/><br/><br/><br/><br/><br/><br/>
+<ng-template #sentenceIsLoading>
+    <span>Loading Sentence...</span>
+</ng-template>
 
-Comments<br/>
-<md-card class="sentence-card" *ngFor="let comment of (sentence | async)?.comments">
-    Text: {{comment.text}}<br/>
-    Language: {{comment.language.englishName}}
-    <br/><br/><br/>
-    JSON: {{comment | json}}
-</md-card>
-
-<br/><br/><br/><br/><br/><br/><br/>
-
-Translations
-<md-card class="sentence-card" *ngFor="let translation of (sentence | async)?.translations">
-    Text: {{translation.text}}<br/>
-    Language: {{translation.englishName}}
-
-    Comments:
-    <md-card class="sentence-card" *ngFor="let comment of translation.comments">
-        Text: {{comment.text}}<br/>
-        Language: {{comment.language.englishName}}
-        <br/><br/><br/>
-        JSON: {{comment | json}}
+<ng-template #sentenceIsLoaded>
+    <md-card class="sentence-card" fxLayout="column">
+        <span class="sentence-text">{{sentence.text}}</span>
+        <div fxLayout="row">
+            <span>Language: {{sentence.language.name | capitalize}}</span>
+        </div>
     </md-card>
 
-    <br/><br/><br/>
-    JSON: {{translation | json}}
-</md-card>
+    <div fxlayout="column" class="comment-card">
+        <span class="section-header">Comments</span>
+
+        <md-card *ngFor="let comment of sentence.comments" fxLayout="column">
+            <span class="comment-text">{{comment.text}}</span>
+            <div fxLayout="row">
+                <span>Language: {{comment.language.name | capitalize}}</span>
+            </div>
+        </md-card>
+    </div>
+
+    <div fxlayout="column" class="translation-card">
+        <span class="section-header">Translations</span>
+
+        <md-card *ngFor="let translation of sentence.translations" fxLayout="column">
+            <span class="translation-text">{{translation.text}}</span>
+            <div fxLayout="row">
+                <span>Language: {{translation.language.name | capitalize}}</span>
+            </div>
+        </md-card>
+    </div>
+</ng-template>

@@ -14,7 +14,7 @@ export class SentenceComponent implements OnInit {
     sentence: SourceSentence;
 
     constructor(private sourceSentenceService: SourceSentenceService,
-                      private route: ActivatedRoute) {
+                private route: ActivatedRoute) {
     }
 
     async ngOnInit(): Promise<void> {

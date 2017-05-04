@@ -1,0 +1,18 @@
+.translation-card,
+.comment-card {
+    padding-top: 24px;
+
+    :not(:first-of-type) {
+        margin-top: 8px;
+    }
+}
+
+.translation-text,
+.comment-text,
+.sentence-text {
+    font-size: 18px;
+}
+
+.section-header {
+    font-size: 24px
+}
