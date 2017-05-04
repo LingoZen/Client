@@ -11,7 +11,7 @@ export const sourceSentenceQuery = gql`
       }
       language {
         id
-        englishName
+        name
       }
       reactions {
         id
@@ -22,7 +22,7 @@ export const sourceSentenceQuery = gql`
         text
         language {
           id
-          englishName
+          name
         }
       }
       translations {
@@ -30,7 +30,7 @@ export const sourceSentenceQuery = gql`
         text
         language {
           id
-          englishName
+          name
         }
         reactions {
           id
@@ -41,7 +41,7 @@ export const sourceSentenceQuery = gql`
           text
           language {
             id
-            englishName
+            name
           }
         }
       }

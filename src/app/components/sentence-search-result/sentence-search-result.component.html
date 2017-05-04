@@ -1,8 +1,8 @@
 <md-card routerLink="/sentences/{{sentence.id}}" fxLayout="column">
     <span class="text">{{sentence.text}}</span>
-    <div fxLayout="row">
+    <div fxLayout="row" class="translations-comments-container">
         <span class="translation">Translations: {{sentence.translations.length}}</span>
         <span class="comment">Comments: {{sentence.comments.length}}</span>
     </div>
-    <span class="language">Language: {{sentence.language.englishName}}</span>
+    <span class="language">Language: {{sentence.language.name | capitalize}}</span>
 </md-card>

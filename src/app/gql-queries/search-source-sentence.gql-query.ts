@@ -11,7 +11,7 @@ export const searchSourceSentencesQuery = gql`
       }
       language {
         id
-        englishName
+        name
       }
       reactions {
         id
