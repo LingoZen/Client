@@ -23,6 +23,7 @@ import {storeReducers} from "./states/store-reducers";
 import {UnregisteredComponent} from "./components/unregistered/unregistered-page.component";
 import {SentenceSearchBarComponent} from "./components/sentence-search-bar/sentence-search-bar.component";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import {CapitalizePipe} from "./pipes/capitalize.pipe";
 
 @NgModule({
     imports: [
@@ -52,7 +53,9 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
         UnregisteredComponent,
         SentenceSearchBarComponent,
         HeaderComponent,
-        SentenceSearchResultComponent
+        SentenceSearchResultComponent,
+
+        CapitalizePipe
     ],
     bootstrap: [
         AppComponent
