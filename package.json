@@ -31,7 +31,6 @@
     "@angular/router": "4.1.0",
     "@ngrx/core": "^1.2.0",
     "@ngrx/store": "^2.2.1",
-    "@types/node": "^6.0.64",
     "angular2-jwt": "^0.2.2",
     "apollo-angular": "^0.13.0",
     "apollo-client": "^1.0.3",
